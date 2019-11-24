@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 from jupyterhub.services.auth import HubAuthenticated
@@ -21,7 +22,9 @@ class AccessTokenHandler(HubAuthenticated, RequestHandler):
     @authenticated
     async def get(self):
         user = self.get_current_user()
+        logging.debug(user)
         user_json = await self._request_token(user['username'])
+        logging.debug(user_json)
         return user_json['auth_state']['access_token']
 
 
