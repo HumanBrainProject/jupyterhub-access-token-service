@@ -11,9 +11,9 @@ from tornado.web import RequestHandler, Application, authenticated
 class AccessTokenHandler(HubAuthenticated, RequestHandler):
     ''' Respond to Access Token requests. '''
     async def _request_token(self, username: str) -> str:
-        user_endpoint = f'{self.api_url}/users/{username}'
+        user_endpoint = f'{self.hub_auth.api_url}/users/{username}'
         headers = {
-            'Authorization': f'token {self.api_token}',
+            'Authorization': f'token {self.hub_auth.api_token}',
         }
         with AsyncHTTPClient as client:
             async with client.get(user_endpoint, headers=headers) as resp:
