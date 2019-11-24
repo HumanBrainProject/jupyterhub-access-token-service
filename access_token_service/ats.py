@@ -23,7 +23,7 @@ class AccessTokenHandler(HubAuthenticated, RequestHandler):
     async def get(self):
         user = self.get_current_user()
         logging.debug(user)
-        user_json = await self._request_token(user['username'])
+        user_json = await self._request_token(user['name'])
         logging.debug(user_json)
         return user_json['auth_state']['access_token']
 
