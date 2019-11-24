@@ -10,7 +10,7 @@ from tornado.web import RequestHandler, Application, authenticated
 class AccessTokenHandler(HubAuthenticated, RequestHandler):
     ''' Respond to Access Token requests. '''
     async def _request_token(self, username: str) -> str:
-        user_endpoint = self.api_url + f'/users/{username}'
+        user_endpoint = f'{self.api_url}/users/{username}'
         headers = {
             'Authorization': f'token {self.api_token}',
         }
@@ -28,7 +28,7 @@ class AccessTokenHandler(HubAuthenticated, RequestHandler):
 def main():
     prefix = os.environ.get('JUPYTERHUB_SERVICE_PREFIX', '')
     app = Application([
-        (prefix + '/oauth_token', AccessTokenHandler),
+        (prefix + 'oauth_token', AccessTokenHandler),
     ])
-    app.listen(8080)
+    app.listen(8528)
     tornado.ioloop.IOLoop.current().start()
