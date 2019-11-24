@@ -15,9 +15,9 @@ class AccessTokenHandler(HubAuthenticated, RequestHandler):
         headers = {
             'Authorization': f'token {self.hub_auth.api_token}',
         }
-        with AsyncHTTPClient as client:
-            async with client.get(user_endpoint, headers=headers) as resp:
-                return json.loads(resp)
+        client = AsyncHTTPClient()
+        async with client.get(user_endpoint, headers=headers) as resp:
+            return json.loads(resp)
 
     @authenticated
     async def get(self):
