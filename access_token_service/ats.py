@@ -31,7 +31,7 @@ class AccessTokenHandler(HubAuthenticated, RequestHandler):
 def main():
     prefix = os.environ.get('JUPYTERHUB_SERVICE_PREFIX', '')
     app = Application([
-        (prefix + 'oauth_token', AccessTokenHandler),
+        (prefix + 'access-token', AccessTokenHandler),
     ])
     app.listen(8528)
     tornado.ioloop.IOLoop.current().start()
