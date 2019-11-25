@@ -25,7 +25,7 @@ class AccessTokenHandler(HubAuthenticated, RequestHandler):
         logging.debug(user)
         user_json = await self._request_token(user['name'])
         logging.debug(user_json)
-        return user_json['auth_state']['access_token']
+        self.write({'access_token': user_json['auth_state']['access_token']})
 
 
 def main():
