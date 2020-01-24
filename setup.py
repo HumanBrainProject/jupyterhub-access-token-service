@@ -7,11 +7,11 @@ requirements = ['jupyterhub>=1.0']
 
 setup(
     name='jupyterhub-access-token-service',
-    version='0.1.0',
+    version='0.1.1',
     description='Jupyterhub Access Token Service',
     long_description=long_description,
-    author= "Jonathan Villemaire-Krajden, EPFL",
-    author_email= "jonathan.villemaire-krajden@epfl.ch",
+    author="Jonathan Villemaire-Krajden, EPFL",
+    author_email="jonathan.villemaire-krajden@epfl.ch",
     long_description_content_type='text/markdown',
     packages=find_packages(),
     python_requires='>=3.6',
